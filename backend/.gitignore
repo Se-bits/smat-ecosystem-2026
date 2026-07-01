@@ -1,0 +1,40 @@
+# --- GENERAL ---
+.DS_Store
+.vscode/
+.idea/
+*.log
+
+# --- BACKEND (Python / FastAPI) ---
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.env
+# IMPORTANTE: No subir la base de datos local
+*.db
+*.sqlite3
+
+# --- MOBILE (Flutter / Dart) ---
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+build/
+# Si usan Android Studio
+*.iml
+android/local.properties
+ios/Flutter/Generated.xcconfig
+
+# --- IOT (Python Scripts) ---
+# (Suele usar las mismas reglas que Backend)
+iot_industrial/venv/
+
+# --- SIMULACIÓN (Godot Engine) ---
+.godot/
+.import/
+export/
+export_presets.cfg
+# Archivos de importación específicos
+*.translation

@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  # Servicio 1: El Servidor API
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - smat_sqlite_data:/app/data
+    environment:
+      - DATABASE_URL=sqlite:////app/data/smat.db
+    # SOLUCIÓN AL RETO: Control de salud para verificar que FastAPI esté listo
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/docs"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+
+  # Servicio 2: El traductor de protocolos IoT
+  mqtt_bridge:
+    build: ./iot_device
+    depends_on:
+      backend:
+        condition: service_healthy # Espera a que el healthcheck del backend sea exitoso
+    environment:
+      - API_URL=http://backend:8000/lecturas/
+      - JWT_TOKEN=tu_token_jwt_aqui
+
+volumes:
+  # Define el volumen para que la DB de SQLite sobreviva a los reinicios
+  smat_sqlite_data:

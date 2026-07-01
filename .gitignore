@@ -1,0 +1,26 @@
+venv/
+__pycache__/
+*.pyc
+smat.db
+.pytest_cache/
+
+# --- GENERAL ---
+.DS_Store
+.vscode/
+.idea/
+# --- PYTHON / BACKEND ---
+backend/venv/
+backend/__pycache__/
+backend/*.py[cod]
+backend/.env
+backend/*.db
+backend/*.sqlite3
+# --- FLUTTER / MOBILE ---
+mobile/.dart_tool/
+mobile/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+mobile/.pub-cache/
+mobile/.pub/
+mobile/build/
+mobile/android/local.properties
+mobile/ios/Flutter/Generated.xcconfig
